@@ -12,13 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const MailBodyOneScreen(),
-      // home: const MyHomePage(title: 'Email Content Display'),
+      home: const MyHomePage(title: 'Email Content Display'),
     );
   }
 }
