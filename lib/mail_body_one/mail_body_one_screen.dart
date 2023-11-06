@@ -16,42 +16,40 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      appBar: AppBar(),
       body: SingleChildScrollView(
-        child: Center(
-          child: Padding(
-            padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.05),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width / 3),
-                  child: Column(
-                    children: [
-                      logoWidget,
-                      thankYouPurchase,
-                      const SpaceBetweenWidget(height: 20),
-                      orderSummary,
-                      const SpaceBetweenWidget(height: 60),
-                      customerInformation,
-                    ],
-                  ),
-                ),
-                const SpaceBetweenWidget(height: 20),
-                Divider(
-                  thickness: 1,
-                  color: Colors.grey.shade300,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                const SpaceBetweenWidget(height: 20),
-                contactus,
-                const SpaceBetweenWidget(height: 40),
-              ],
-            ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            children: [
+              Column(
+                children: [
+                  //logo widget
+                  logoWidget,
+
+                  // Thank you for your purchase text Widget
+                  thankYouPurchase,
+                  const SpaceBetweenWidget(height: 20),
+
+                  // Order Summary Widget
+                  orderSummary,
+                  const SpaceBetweenWidget(height: 20),
+
+                  //customer information Widget
+                  customerInformation,
+                ],
+              ),
+              const SpaceBetweenWidget(height: 10),
+              Divider(
+                thickness: 1,
+                color: Colors.grey.shade300,
+              ),
+              const SpaceBetweenWidget(height: 20),
+
+              //contact us Widget
+              contactus,
+              const SpaceBetweenWidget(height: 20),
+            ],
           ),
         ),
       ),
@@ -64,11 +62,11 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
       children: [
         Image.network(
             'https://cdn.shopify.com/s/files/1/0569/6867/5527/files/finalised_logo_-_cropped.jpg?14393',
-            height: 200,
-            width: 180),
+            height: 100,
+            width: 150),
         const TextWidget(
           text: 'ORDER #226324',
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: FontWeight.normal,
           color: Colors.grey,
         ),
@@ -82,14 +80,14 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
       children: [
         const TextWidget(
           text: 'Thank you for your purchase!',
-          fontSize: 24,
+          fontSize: 16,
           fontWeight: FontWeight.normal,
           color: Colors.black,
         ),
         const TextWidget(
           text:
               'Hi Sparks, we\'re getting your order ready to be shipped. We will notify you when it has been sent.',
-          fontSize: 16,
+          fontSize: 12,
           fontWeight: FontWeight.normal,
           color: Colors.grey,
         ),
@@ -99,7 +97,7 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
             ElevatedButton(
               style: ButtonStyle(
                   padding: MaterialStateProperty.all<EdgeInsets>(
-                      const EdgeInsets.all(25.0)),
+                      const EdgeInsets.all(16.0)),
                   foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.white),
                   backgroundColor:
@@ -110,16 +108,15 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
                           side: const BorderSide(color: Colors.blue)))),
               onPressed: () => urLaunch.urlLaunch(
                   'https://happilo.com/56968675527/orders/ae104d7c6bab2bc032d5791a22c1007d'),
-              child: const TextWidget(text: 'View your order', fontSize: 16),
+              child: const TextWidget(text: 'View your order', fontSize: 14),
             ),
-            const SpaceBetweenWidget(width: 20),
-            const TextWidget(text: 'or', fontSize: 16),
-            const SpaceBetweenWidget(width: 5),
+            const SpaceBetweenWidget(width: 10),
+            const TextWidget(text: 'or ', fontSize: 14),
             GestureDetector(
               onTap: () => urLaunch.urlLaunch('https://happilo.com/'),
               child: const TextWidget(
                 text: 'Visit our store',
-                fontSize: 16,
+                fontSize: 14,
                 color: Colors.blue,
               ),
             ),
@@ -131,7 +128,13 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
 
   Widget get orderSummary {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const TextWidget(
+          text: 'Order Summary',
+          fontSize: 16,
+        ),
+        const SpaceBetweenWidget(width: 20),
         ListTile(
           leading: Container(
             decoration: BoxDecoration(
@@ -139,25 +142,25 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
                 borderRadius: const BorderRadius.all(Radius.circular(6))),
             child: Image.network(
               'https://cdn.shopify.com/s/files/1/0569/6867/5527/products/1v2_bf9e06f6-cd22-4209-a932-310a869534c0_compact_cropped.png?v=1632846589',
-              height: 60,
-              width: 60,
+              height: 100,
+              width: 70,
             ),
           ),
           title: const TextWidget(
             text: 'Happilo 100% Natural Premium California Almonds × 1',
-            fontSize: 16,
+            fontSize: 12,
             fontWeight: FontWeight.w500,
             color: Colors.black,
           ),
           subtitle: const TextWidget(
             text: '200g',
-            fontSize: 14,
+            fontSize: 12,
             fontWeight: FontWeight.w500,
             color: Colors.grey,
           ),
           trailing: const TextWidget(
             text: '₹275.00',
-            fontSize: 16,
+            fontSize: 12,
             fontWeight: FontWeight.w500,
             color: Colors.black,
           ),
@@ -165,16 +168,13 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
         Divider(
           thickness: 1,
           color: Colors.grey.shade300,
-          indent: 20,
-          endIndent: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              flex: 2,
-              child: Image.network(
-                'https://cdn.shopify.com/s/files/1/0569/6867/5527/products/1v2_bf9e06f6-cd22-4209-a932-310a869534c0_compact_cropped.png?v=1632846589',
+            const Expanded(
+              flex: 6,
+              child: SizedBox(
                 height: 60,
                 width: 60,
               ),
@@ -198,7 +198,7 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
                     alignment: Alignment.centerRight,
                     child: TextWidget(
                       text: 'You saved ₹18.75',
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.w500,
                       color: Colors.grey,
                     ),
@@ -218,13 +218,13 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
       children: [
         TextWidget(
           text: label,
-          fontSize: 16,
+          fontSize: 12,
           fontWeight: FontWeight.w500,
           color: Colors.grey,
         ),
         TextWidget(
           text: price,
-          fontSize: 16,
+          fontSize: 12,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         )
@@ -239,7 +239,7 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
         ListTile(
           title: TextWidget(
             text: 'Customer information',
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black,
           ),
@@ -252,14 +252,14 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
               child: ListTile(
                 title: TextWidget(
                   text: 'Shipping address',
-                  fontSize: 16,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
                 ),
                 subtitle: TextWidget(
                   text:
                       'Sparks .\nSparksMonk Pvt Ltd, 649, 13th Cross,\n27th Main, HSR Sector 1, Bangalore 560102 \n560102 BANGALORE KA \nIndia',
-                  fontSize: 16,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Colors.grey,
                 ),
@@ -270,14 +270,14 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
               child: ListTile(
                 title: TextWidget(
                   text: 'Billing address',
-                  fontSize: 16,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
                 ),
                 subtitle: TextWidget(
                   text:
                       'Sparks .\nSparksMonk Pvt Ltd, 649, 13th Cross,\n27th Main, HSR Sector 1, Bangalore 560102 \n560102 BANGALORE KA \nIndia',
-                  fontSize: 16,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Colors.grey,
                 ),
@@ -293,13 +293,13 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
               child: ListTile(
                 title: TextWidget(
                   text: 'Shipping method',
-                  fontSize: 16,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
                 ),
                 subtitle: TextWidget(
                   text: 'Standard',
-                  fontSize: 16,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Colors.grey,
                 ),
@@ -310,13 +310,13 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
               child: ListTile(
                 title: TextWidget(
                   text: 'Payment method',
-                  fontSize: 16,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
                 ),
                 subtitle: TextWidget(
                   text: 'Shopflo',
-                  fontSize: 16,
+                  fontSize: 12,
                   fontWeight: FontWeight.normal,
                   color: Colors.grey,
                 ),
@@ -329,30 +329,16 @@ class _MailBodyOneScreenState extends State<MailBodyOneScreen> {
   }
 
   Widget get contactus {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const TextWidget(
+    return const Text.rich(
+      TextSpan(
           text:
               'If you have any questions, reply to this email or contact us at ',
-          fontSize: 14,
-          fontWeight: FontWeight.normal,
-          color: Colors.grey,
-        ),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              // urLaunch.launched = urLaunch.openUrl('mailto: ${care@happilo.com}');
-            });
-          },
-          child: const TextWidget(
-            text: 'care@happilo.com',
-            fontSize: 14,
-            fontWeight: FontWeight.normal,
-            color: Colors.blueAccent,
-          ),
-        ),
-      ],
+          children: <InlineSpan>[
+            TextSpan(
+              text: 'care@happilo.com',
+              style: TextStyle(fontSize: 12, color: Colors.blue),
+            )
+          ]),
     );
   }
 }
